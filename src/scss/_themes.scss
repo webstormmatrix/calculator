@@ -1,0 +1,86 @@
+$white: #ffffff;
+$pale-white: #f8f8f8;
+$grey: #d9d7d7;
+$grey1: #c9c7c7;
+$grey2: #a9a6a6;
+
+$black: #1b1b1b;
+$eerie: #272727;
+$eerie1: #3f3f3f;
+$eerie2: #555555;
+
+body[data-theme="light-theme"] {
+  background-color: $grey;
+  color: $black;
+  fill: $black;
+  stroke: $black;
+
+  & .theme-primary-background {
+    background-color: $pale-white;
+  }
+  & .theme-primary-color {
+    background-color: $pale-white;
+  }
+  & .theme-primary-fill {
+    background-color: $pale-white;
+  }
+
+  & .theme-secondary-background {
+    background-color: $grey;
+  }
+  & .theme-secondary-color {
+    background-color: $grey;
+  }
+  & .theme-secondary-fill {
+    background-color: $grey;
+  }
+
+  & button {
+    background-color: $grey;
+  }
+  & button:hover,
+  & button:focus {
+    background-color: $grey1;
+  }
+  & button:active {
+    background-color: $grey2;
+  }
+}
+
+body[data-theme="dark-theme"] {
+  background-color: $eerie;
+  color: $pale-white;
+  fill: $pale-white;
+  stroke: $pale-white;
+
+  & .theme-primary-background {
+    background-color: $black;
+  }
+  & .theme-primary-color {
+    background-color: $black;
+  }
+  & .theme-primary-fill {
+    background-color: $black;
+  }
+
+  & .theme-secondary-background {
+    background-color: $eerie;
+  }
+  & .theme-secondary-color {
+    background-color: $eerie;
+  }
+  & .theme-secondary-fill {
+    background-color: $eerie;
+  }
+
+  & button {
+    background-color: $eerie;
+  }
+  & button:hover,
+  & button:focus {
+    background-color: $eerie1;
+  }
+  & button:active {
+    background-color: $eerie2;
+  }
+}

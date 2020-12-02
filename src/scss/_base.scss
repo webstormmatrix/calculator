@@ -1,0 +1,25 @@
+//mixins and variables
+$bp-tab: 768px;
+$bp-desktop: 992px;
+
+@mixin mq($size) {
+  @media only screen and (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin trf($property) {
+  transform: $property;
+  -moz-transform: $property;
+  -ms-transform: $property;
+  -o-transform: $property;
+  -webkit-transform: $property;
+}
+
+@mixin trs($transition) {
+  -moz-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}

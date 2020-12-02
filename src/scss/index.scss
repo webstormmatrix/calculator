@@ -1,0 +1,315 @@
+@import "reset";
+@import "base";
+@import "themes";
+
+.body-theme-transition,
+.body-theme-transition *,
+.body-theme-transition *::before,
+.body-theme-transition *::after {
+  @include trs(background-color 0.3s linear);
+  @include trs(color 0.3s linear);
+  @include trs(fill 0.3s linear);
+  @include trs(stroke 0.3s linear);
+}
+
+#wrapper {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  min-width: 320px;
+  min-height: 320px;
+
+  background-color: inherit;
+}
+
+.menu {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: row-reverse;
+
+  align-items: stretch;
+  background-color: none;
+
+  @include trf(translateX(-100%));
+  @include trs(transform 0.3s linear);
+
+  & .menu__list {
+    position: absolute;
+    left: 0;
+    z-index: 101;
+
+    width: fit-content;
+    min-width: 250px;
+    height: 100%;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    @include trf(translateX(calc(100vw - 100%)));
+    @include trs(transform 0.3s linear);
+  }
+
+  & .menu__overlay {
+    position: absolute;
+    z-index: 100;
+
+    flex-grow: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    filter: blur(1px);
+  }
+
+  &--open {
+    @include trf(translateX(0%));
+    & .menu__list {
+      @include trf(translateX(0%));
+    }
+  }
+}
+
+.menu__list {
+  .menu__button {
+    position: absolute;
+    top: 1rem;
+    left: 100%;
+
+    width: 40px;
+    height: 40px;
+    margin: 0 0 0 1rem;
+
+    overflow: hidden;
+
+    & .menu_icon {
+      width: 100%;
+    }
+
+    & .grid-menu-icon {
+      position: absolute;
+      @include trf(translateX(0));
+      @include trs(transform 0.1s linear);
+    }
+    & .close-menu-icon {
+      position: absolute;
+      @include trf(translateX(-100%));
+      @include trs(transform 0.1s linear);
+    }
+
+    &--open {
+      & .grid-menu-icon {
+        @include trf(translateX(100%));
+      }
+      & .close-menu-icon {
+        @include trf(translateX(0%));
+      }
+    }
+  }
+
+  & .menu_option {
+    width: 100%;
+
+    & .option__title {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+    & .option__action {
+      width: 100%;
+    }
+  }
+}
+
+#theme-selection {
+  width: 100%;
+  padding: 0.5rem 0;
+
+  font-size: 1rem;
+  color: inherit;
+
+  & optgroup {
+    font-size: 1rem;
+    font-weight: normal;
+    color: inherit;
+  }
+}
+
+.calculator {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.calculator__section {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  & .calculator__section-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
+
+.calculator__section-1 {
+  flex-grow: 0;
+  & .calculator-title {
+    margin: 2rem 0 0.5rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+}
+
+.calculator__section-2 {
+  padding: 0.5rem 0;
+  flex-grow: 0;
+  & .display__top {
+    width: 100%;
+
+    & .calc-input {
+      text-align: right;
+      font-size: 1.5rem;
+    }
+  }
+
+  & .display__bottom {
+    width: 100%;
+
+    & .display__answer {
+      text-align: right;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+.calculator__section-3 {
+  flex-grow: 2;
+  max-height: 500px;
+  & .calculator__section-container {
+    align-self: flex-start;
+    height: 100%;
+  }
+  & .calculator__keypad {
+    display: grid;
+    height: 100%;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+
+    grid-template-areas: "clearbtn negate percent addition" "one two three minus" "four five six multiplication" "seven eight nine divide" "period naught equals equals";
+
+    & .calculator__button {
+      display: block;
+      min-width: 40px;
+      min-height: 35px;
+
+      padding: 0.5rem 0;
+
+      font-size: 1.25rem;
+      color: inherit;
+    }
+
+    & #calc-clear {
+      grid-area: clearbtn;
+    }
+    & #calc-negate {
+      grid-area: negate;
+    }
+    & #calc-percent {
+      grid-area: percent;
+    }
+    & #calc-add {
+      grid-area: addition;
+    }
+    & #calc-minus {
+      grid-area: minus;
+    }
+    & #calc-multiply {
+      grid-area: multiplication;
+    }
+    & #calc-divide {
+      grid-area: divide;
+    }
+    & #calc-equals {
+      grid-area: equals;
+    }
+
+    & #calc-num-1 {
+      grid-area: one;
+    }
+    & #calc-num-2 {
+      grid-area: two;
+    }
+    & #calc-num-3 {
+      grid-area: three;
+    }
+    & #calc-num-4 {
+      grid-area: four;
+    }
+    & #calc-num-5 {
+      grid-area: five;
+    }
+    & #calc-num-6 {
+      grid-area: six;
+    }
+    & #calc-num-7 {
+      grid-area: seven;
+    }
+    & #calc-num-8 {
+      grid-area: eight;
+    }
+    & #calc-num-9 {
+      grid-area: nine;
+    }
+    & #calc-num-0 {
+      grid-area: naught;
+    }
+    & #calc-num-period {
+      grid-area: period;
+    }
+  }
+}
+
+@include mq($bp-tab) {
+  .calculator {
+    max-width: 512px;
+    margin: auto;
+
+    border-radius: 1rem;
+  }
+  .calculator__section-2 {
+    width: 98%;
+    margin: 0 auto;
+  }
+}
+
+@include mq($bp-desktop) {
+  .menu {
+    @include trf(translateX(0%));
+    flex-direction: row;
+
+    & .menu__list {
+      @include trf(translateX(0%));
+      .menu__button {
+        display: none;
+      }
+    }
+
+    & .menu__overlay {
+      display: none;
+    }
+
+    &--open {
+      @include trf(translateX(0%));
+      & .menu__list {
+        @include trf(translateX(0%));
+      }
+    }
+  }
+}
